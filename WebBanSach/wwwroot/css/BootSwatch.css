@@ -3621,10 +3621,11 @@ textarea.form-control-lg {
 }
 
 .btn-outline-info {
+    --bs-btn-bg: white;
     --bs-btn-color: #5bc0de;
     --bs-btn-border-color: #5bc0de;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #5bc0de;
+    --bs-btn-hover-color: #5bc0de;
+    --bs-btn-hover-bg: #d5e9eb;
     --bs-btn-hover-border-color: #5bc0de;
     --bs-btn-focus-shadow-rgb: 91, 192, 222;
     --bs-btn-active-color: #fff;

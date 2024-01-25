@@ -42,5 +42,17 @@ namespace WebBanSach.Controllers
             }
             return View(obj);
         }
-    }
+
+		public IActionResult Edit()
+		{
+
+			return View();
+		}
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult Edit(int? id)
+		{
+			return View();
+		}
+	}
 }

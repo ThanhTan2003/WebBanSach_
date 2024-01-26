@@ -1,0 +1,53 @@
+﻿@model Category
+
+<form method="post" id="myForm" asp-action="Edit">
+	<div class="border p-3 mt-4" style="background: #f0f6f7">
+		<div class="row pb-2">
+			<h3><b>CẬP NHẬT THỂ LOẠI</b></h3>
+			<br /><br />
+		</div>
+		
+		<div class="mb-3">
+			<label asp-for=Name>Tên thể loại</label>
+			<input asp-for=Name class="form-control" style="width: 50%" />
+			<span asp-validation-for=Name style="color: darkred"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for=DisplayOrder>Display Order</label>
+			<input asp-for=DisplayOrder class="form-control" style="width: 50%"/>
+			<span asp-validation-for=DisplayOrder style="color: darkred"></span>
+		</div>
+		<br />
+		<div style="width: 50%">
+			<button type="submit" class="btn btn-primary" style="border-radius: 5px; width: 55%; float: left" onclick="return validateForm();"><i class="bi bi-pen"></i>&nbsp&nbsp Cập nhật</button>
+			
+			<a asp-controller="Categrory" asp-action="Index" class="btn btn-outline-info" style="border-radius: 5px; width: 43%; float: right;"><b><i class="bi bi-x-lg"></i>&nbsp&nbsp Hủy</b></a>
+		</div>
+		<br /><br />
+		<div id="validationSummary" style="color: darkred"></div>
+		<br />
+	</div>
+
+</form>
+
+<!--Kiểm tra dữ liệu Name và DisplayOrder-->
+<script>
+	function validateForm() {
+		var nameValue = document.getElementById('Name').value.trim();
+		var displayOrderValue = document.getElementById('DisplayOrder').value.trim();
+		var validationSummary = document.getElementById('validationSummary');
+
+		if (nameValue === displayOrderValue) {
+			validationSummary.innerHTML = "Tên thể loại không được trùng với Display Order.";
+			return false; // Ngăn chặn form từ việc submit
+		} else {
+			validationSummary.innerHTML = "";
+			return true; // Cho phép form submit
+		}
+	}
+</script>
+
+
+
+
+

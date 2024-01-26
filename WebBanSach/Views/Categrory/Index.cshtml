@@ -82,13 +82,17 @@
 	<thead class="table-info">
 		<th style ="border: 1px solid #ddd;">Category name</th>
 		<th style ="border: 1px solid #ddd;">Display Order</th>
+		<th style="border: 1px solid #ddd;"></th>
 		</thead>
 		<tbody>
 			@foreach(var item in Model)
 			{
 				<tr>
-				<td style="border: 1px solid #ddd;">@item.Name</td>
-				<td style="border: 1px solid #ddd;">@item.DisplayOrder</td>
+					<td style="border: 1px solid #ddd;">@item.Name</td>
+					<td style="border: 1px solid #ddd;">@item.DisplayOrder</td>
+					<td style="text-align: center">
+					<a asp-controller="Categrory" asp-action="Edit" asp-route-id=@item.Id><i class="bi bi-pencil-square" style="text-align: center"></i></a>
+					</td>
 				</tr>
 				
 			}

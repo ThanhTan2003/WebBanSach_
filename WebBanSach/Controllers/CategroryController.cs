@@ -26,7 +26,7 @@ namespace WebBanSach.Controllers
 		//phương thức này chỉ chấp nhận yêu cầu HTTP POST
 		//yêu cầu sự xác nhận (token) để bảo vệ khỏi tấn công Cross-Site Request Forgery (CSRF)
 		[HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] // Xác nhận người dùng
         public IActionResult Create(Category obj)
         {
             if(obj.Name !="" && obj.DisplayOrder != null)
@@ -60,6 +60,7 @@ namespace WebBanSach.Controllers
             return View(categoryFromDb);
 		}
 
+		// Cập nhật
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public IActionResult Edit(Category obj)
@@ -73,7 +74,7 @@ namespace WebBanSach.Controllers
 			}
 			if (ModelState.IsValid)
 			{
-				_db.Categories.Add(obj);
+				_db.Categories.Update(obj);
 				_db.SaveChanges();
 				return RedirectToAction("index");
 			}

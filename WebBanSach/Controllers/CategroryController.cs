@@ -41,6 +41,7 @@ namespace WebBanSach.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+				TempData["Sucess"] = "Đã thêm mới thể loại thành công";
                 return RedirectToAction("index"); //chuyển hướng đến action "index"
 			}
             return View(obj); 
@@ -76,6 +77,39 @@ namespace WebBanSach.Controllers
 			{
 				_db.Categories.Update(obj);
 				_db.SaveChanges();
+				TempData["Sucess"] = "Đã cập nhật thể loại thành công!";
+				return RedirectToAction("index");
+			}
+			return View(obj);
+		}
+
+		public IActionResult Delete(int? id)
+		{
+
+			if (id == null || id == 0)
+				return NotFound();
+			var categoryFromDb = _db.Categories.Find(id);
+			//var categoryFirstDb = _db.Categories.FirstOrDefault(u => u.Id == id);
+			//var categoryFromSingle = _db.Categories.SingleOrDefault(u => u.Id == id);
+
+			if (categoryFromDb == null)
+				return NotFound();
+			return View(categoryFromDb);
+		}
+
+		// Cập nhật
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult DeletePost(int? id)
+		{
+			var obj = _db.Categories.Find(id);
+			if (obj == null)
+				return NotFound();
+			else
+			{
+				_db.Categories.Remove(obj);
+				_db.SaveChanges();
+				TempData["Sucess"] = "Đã xóa thể loại thành công";
 				return RedirectToAction("index");
 			}
 			return View(obj);

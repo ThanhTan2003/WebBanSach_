@@ -1,4 +1,8 @@
 ﻿@model IEnumerable<Category>
+
+<!--Hiển thị thông báo khi thao tác Thêm - Sửa - Xóa được cài đặt trong Views/Shared/ThongBao.cshtml-->
+<partial name="ThongBao" />
+
 <br /><br />
 <h2 style="text-align:center"><b>THỂ LOẠI</b></h2>
 	<br /><br />
@@ -83,6 +87,7 @@
 		<th style ="border: 1px solid #ddd;">Category name</th>
 		<th style ="border: 1px solid #ddd;">Display Order</th>
 		<th style="border: 1px solid #ddd;"></th>
+		<th style="border: 1px solid #ddd;"></th>
 		</thead>
 		<tbody>
 			@foreach(var item in Model)
@@ -90,9 +95,12 @@
 				<tr>
 					<td style="border: 1px solid #ddd;">@item.Name</td>
 					<td style="border: 1px solid #ddd;">@item.DisplayOrder</td>
-					<td style="text-align: center">
+					<td style="text-align: center; border: 1px solid #ddd;">
 					<a asp-controller="Categrory" asp-action="Edit" asp-route-id=@item.Id><i class="bi bi-pencil-square" style="text-align: center"></i></a>
 					</td>
+					<td style="text-align: center; border: 1px solid #ddd;">
+					<a asp-controller="Categrory" asp-action="Delete" asp-route-id=@item.Id><i class="bi bi-x-square" style="text-align: center; color:red"></i></a>
+				</td>
 				</tr>
 				
 			}
